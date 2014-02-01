@@ -15,7 +15,7 @@ This is a very early project.
 
 Requires bower for installing SJCL
 
-## Licence
+## License
 
 right.
 
