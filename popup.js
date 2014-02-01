@@ -21,12 +21,19 @@ var encrypter = {
           that.port.postMessage({cmd:"set_current_text", text:that.encrypt(msg.text)});
         }
         else if (msg.cmd == "decrypt"){
-          //TODO implement
+          v = that.decrypt(msg.text);
+          that.port.postMessage({cmd: "set_current_text", text:v});
         }
       });
     })
   },
 
+  //Splits an IV+CT text to a [iv,ct] 
+  splitCt: function(text){
+    //TODO move hardcode
+    var ivLength = 24;
+    return {iv:text.substr(0,ivLength), ct:text.substr(ivLength)};
+  },
 
   calculateKey: function(){
     return sjcl.misc.pbkdf2(this.pass, this.salt, this.iterations, this.keyLength);
@@ -36,7 +43,12 @@ var encrypter = {
     enc = JSON.parse(sjcl.encrypt(this.calculateKey(), text));
     return enc.iv + enc.ct;
   },
+
   decrypt: function(text){
+    var info = this.splitCt(text);
+    var vals = {iv:info.iv, ct:info.ct};
+    //TODO proper error handling on exception
+    return sjcl.decrypt(this.calculateKey(), JSON.stringify(vals), {}, {});
   },
 
   //Start by calling the contentscript

@@ -18,11 +18,12 @@ chrome.runtime.onConnect.addListener(function(port){
     //TODO
   });
   port.onMessage.addListener(function(msg) {
-    if (msg.cmd == "want_to_decrypt")
+    if (msg.cmd == "want_to_decrypt"){
+      port.postMessage({cmd: "decrypt", text: currentInput.value});
+    }
       //TODO this should search the whole page
       //for the predefined encryption tag
       //and call decrypt for each text and replace
-      console.log("not implemented");
     else if (msg.cmd == "want_to_encrypt"){
       port.postMessage({cmd: "encrypt", text: currentInput.value});
     }
