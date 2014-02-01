@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "SecrecyExtension",
+  "version": "0.0.1",
+  "description": "Provides simple password-challenge secrecy for the web",
+  "permissions": [
+    "activeTab",
+    "http://*/*"
+    ],
+  "browser_action":{
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+  {
+    "matches" : ["http://*/*"],
+    "js": ["contentscript.js"],
+    "run_at": "document_end"
+  }
+  ]
+}

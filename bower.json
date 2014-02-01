@@ -1,0 +1,23 @@
+{
+  "name": "secrecy_extension",
+  "version": "0.0.1",
+  "homepage": "https://github.com/francof/secrecy_extension",
+  "description": "A password challenge based web text encrypter",
+  "main": "manifest.json",
+  "authors": [
+    "francof",
+    "idontdomath"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sjcl": "~1.0.0"
+  }
+}
