@@ -3,6 +3,7 @@
   "name": "SecrecyExtension",
   "version": "0.0.1",
   "description": "Provides simple password-challenge secrecy for the web",
+  "options_page": "options.html",
   "permissions": [
     "activeTab",
     "http://*/*"
