@@ -16,15 +16,12 @@ function save_options() {
 // Restores select box state to saved value from localStorage.
 function restore_options() {
   var pass = localStorage["default_pass"];
-  console.log("restoring");
   if (pass) {
-  console.log("restoring");
     var passInput = document.getElementById("default_pass");
     passInput.value = pass;
   }
   var tag = localStorage["tag"];
   if (tag) {
-  console.log("restoring");
     var tagInput = document.getElementById("tag");
     tagInput.value = tag;
   }
