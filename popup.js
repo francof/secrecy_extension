@@ -8,7 +8,7 @@ var encrypter = {
   //Setup communication between the contentscript and the popup
   connect: function(){
     var that = this;
-    chrome.tabs.getSelected(null, function(tab){
+    chrome.tabs.query({active: true}, function(tab){
       that.port = chrome.tabs.connect(tab.id,{name: "secrecy"})
 
       that.port.onDisconnect.addListener(function(e){
